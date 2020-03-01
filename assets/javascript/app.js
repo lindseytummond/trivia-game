@@ -4,31 +4,31 @@ var triviaQuestions = [
     {
     question: "What food is Buffalo, NY best known for?",
     choices: ["Pizza", "Wings", "Hot Dogs", "Tacos"],
-    answer: "Wings",
+    correctAnswer: "Wings",
     },
 
     {
     question: "The Bills are Buffalo’s beloved football team, how many consecutive years in the 90’s did they make the Super Bowl?",
     choices: ["2", "4", "6", "8"],
-    answer: "4",
+    correctAnswer: "4",
     },
 
     {
     question: "What holiday in Buffalo is celebrated the Monday after Easter in which men use squirt guns to drench women with water and women hit men with pussy willows?",
     choices: ["Patriot’s Day", "Boxing Day", "Dyngus Day", "Polar Bear Plunge Day"],
-    answer: "Dyngus Day",
+    correctAnswer: "Dyngus Day",
     },
 
     {
     question: "What is Buffalo’s nickname?",
     choices: ["Ace City", "King City", "Queen City", "Joker City"],
-    answer: "Queen City",
+    correctAnswer: "Queen City",
     },
 
     {
     question: "How many ‘snow days’ are built into the calendar for Buffalo Schools?",
     choices: ["2", "4", "6", "8"],
-    answer: "4",
+    correctAnswer: "4",
     },
 ]
 
@@ -47,6 +47,26 @@ var wrongAnswerGifs = [
     "assets/images/no-loser.gif",
     "assets/images/no-buffalo.gif",  
 ]
+
+//load gif images for right and wrong answers
+
+function preloadImage(status){
+    const correctAnswer = triviaQuestions[currentQuestion].correctAnswer;
+
+    if (status === 'win'){
+        $('#game').html(`
+            <p class="preload-image"> Congrats! You know your Buffalo trivia! </p>
+            <p class="preload-image"> The correct answer is <b>${correctAnswer}</b> </p>
+        `);
+    } 
+
+    else {
+        $('#game').html(`
+            <p class="preload-image"> The correct answer is <b>${correctAnswer}</b></p>
+            <p class="preload-image"> You must not be from Buffalo</p>
+        `);
+    }
+}
 
 //global variables
 
@@ -70,7 +90,9 @@ function timesUp(){
     clearInterval(time);
 
     lost++;
-    nextQuestion();
+    preloadImage('lose');
+    setTimeout(nextQuestion, 6 * 1000);
+    
 }
 
 //load questions and choices
@@ -106,7 +128,9 @@ function nextQuestion(){
     if (questionOver){
         console.log('end of question');
         displayResult();
-    } else {
+    } 
+    
+    else {
         currentQuestion++;
         loadQuestion();
     }
@@ -116,18 +140,20 @@ $(document).on('click', '.choice', function() {
     clearInterval(time);
     const selectedAnswer = $(this).attr('data-answer');
     console.log (selectedAnswer);
-    const answer = triviaQuestions[currentQuestion].answer;
+    const correctAnswer = triviaQuestions[currentQuestion].correctAnswer;
 
-    if (answer === selectedAnswer){
-
-
+    if (correctAnswer === selectedAnswer) {
         score++;
         console.log ('correct answer');
-        nextQuestion();
-    } else {
+        preloadImage('win');
+        setTimeout(nextQuestion, 6 * 1000);
+    } 
+    
+    else {
         lost++;
         console.log ('wrong answer');
-        nextQuestion();
+        preloadImage('lose');
+        setTimeout(nextQuestion, 6 * 1000);
     }
 
 
