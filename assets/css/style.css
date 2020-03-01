@@ -1,0 +1,6 @@
+.choice{
+    border: 2px solid lightgrey;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}

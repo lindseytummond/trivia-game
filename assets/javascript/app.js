@@ -41,9 +41,26 @@ var score = 0;
 var lost = 0;
 var time;
 
+//timer
+function countDown(){
+    counter--;
+    $('#timer').html('time left: ' + counter);
+
+    if (counter === 0){
+        timesUp();
+    }
+}
+
+function timesUp(){
+    clearInterval(time);
+}
+
 //load questions and choices
 
 function loadQuestion() {
+    counter = 30;
+    time = setInterval(countDown, 1000);
+
     const question = triviaQuestions [currentQuestion].question;
     const choices = triviaQuestions [currentQuestion].choices;
 
