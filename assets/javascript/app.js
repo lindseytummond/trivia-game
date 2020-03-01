@@ -83,12 +83,13 @@ function loadChoices(choices){
     return result;
 }
 
-//move on to next question automatically
+//move on to next question automatically or end game
 
 function nextQuestion(){
     const questionOver = (triviaQuestions.length -1) === currentQuestion;
     if (questionOver){
         console.log('end of question');
+        displayResult();
     } else {
         currentQuestion++;
         loadQuestion();
@@ -115,5 +116,29 @@ $(document).on('click', '.choice', function() {
 
 
 });
+
+//scores
+
+function displayResult(){
+    const result = `
+     <p>You Answered: ${score} question(s) right</p>
+     <p>You Answered: ${lost} question(s) wrong</p>
+     <p>Total Questions: ${triviaQuestions.length}</p>
+     <button class="btn btn-primary" id="reset">Play Again</button>
+    `;
+    $('#game').html(result);
+}
+
+//game reset
+
+$(document).on('click', '#reset', function(){
+    counter = 5;
+    currentQuestion = 0;
+    score = 0;
+    lost = 0;
+    time = null;   
+    loadQuestion();
+});
+
 
 loadQuestion();
