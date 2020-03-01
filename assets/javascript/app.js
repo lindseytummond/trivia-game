@@ -32,6 +32,22 @@ var triviaQuestions = [
     },
 ]
 
+var correctAnswerGifs = [
+    "assets/images/yes-wings.gif",
+    "assets/images/yes-bills.gif",
+    "assets/images/yes-dyngus.gif",
+    "assets/images/yes-queens.gif",
+    "assets/images/yes-snow.gif",  
+]
+
+var wrongAnswerGifs = [
+    "assets/images/no-sign.gif",
+    "assets/images/no-josh-allen.gif",
+    "assets/images/no-joquin.gif",
+    "assets/images/no-loser.gif",
+    "assets/images/no-buffalo.gif",  
+]
+
 //global variables
 
 var counter = 5;
@@ -128,6 +144,7 @@ function displayResult(){
     `;
     $('#game').html(result);
 }
+
 
 //game reset
 
