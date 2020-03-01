@@ -3,14 +3,14 @@
 const triviaQuestions = 
 [
     {
-    question: "What food is Buffalo, NY known for?",
+    question: "What food is Buffalo, NY best known for?",
     choices: ["Pizza", "Wings", "Hot Dogs", "Tacos"],
     answer: "Wings",
     },
 
     {
     question: "The Bills are Buffalo’s beloved football team, how many consecutive years in the 90’s did they make the Super Bowl?",
-    choices: ["4", "6", "2", "7"],
+    choices: ["2", "4", "6", "8"],
     answer: "4",
     },
 
@@ -33,20 +33,36 @@ const triviaQuestions =
     },
 ]
 
-//let variables
+//global variables
 
-let counter = 30;
-let currentQuestion = 0;
-let score = 0;
-let lost = 0;
-let time;
+var counter = 30;
+var currentQuestion = 0;
+var score = 0;
+var lost = 0;
+var time;
 
-//question and answers on client side
+//load questions and choices
 
 function loadQuestion() {
     const question = triviaQuestions [currentQuestion].question;
     const choices = triviaQuestions [currentQuestion].choices;
-    $('#game').html('<h4>' + question + '</h4>');
+
+    $('#timer').html('time left: ' + counter);
+    $('#game').html
+        (`<h4>${question}</h4>
+        ${loadChoices(choices)}`);
 }
+
+
+function loadChoices(choices){
+    var result = '';
+
+    for (var i = 0; i < choices.length; i++){
+        result += `<p class="choice" data-answer="${choices[i]}">${choices[i]}</p>`;
+    }
+
+    return result;
+}
+
 
 loadQuestion();
