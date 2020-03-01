@@ -32,6 +32,8 @@ var triviaQuestions = [
     },
 ]
 
+//load gif that correlates to right or wrong answers 
+
 var correctAnswerGifs = [
     "assets/images/yes-wings.gif",
     "assets/images/yes-bills.gif",
@@ -48,7 +50,14 @@ var wrongAnswerGifs = [
     "assets/images/no-buffalo.gif",  
 ]
 
-//load gif images for right and wrong answers
+function randomGifs(gifs){
+    var random = Math.floor(Math.random() * gifs.length);
+    var randomGifs = gifs[random];
+    return randomGifs;
+}
+
+
+//load right and wrong answers
 
 function preloadImage(status){
     const correctAnswer = triviaQuestions[currentQuestion].correctAnswer;
@@ -62,8 +71,9 @@ function preloadImage(status){
 
     else {
         $('#game').html(`
-            <p class="preload-image"> The correct answer is <b>${correctAnswer}</b></p>
             <p class="preload-image"> You must not be from Buffalo</p>
+            <p class="preload-image"> The correct answer is <b>${correctAnswer}</b></p>
+            <img src="${randomGifs(wrongAnswerGifs)}"/>
         `);
     }
 }
