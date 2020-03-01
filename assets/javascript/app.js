@@ -1,7 +1,6 @@
 //trivia questions
 
-const triviaQuestions = 
-[
+var triviaQuestions = [
     {
     question: "What food is Buffalo, NY best known for?",
     choices: ["Pizza", "Wings", "Hot Dogs", "Tacos"],
@@ -35,7 +34,7 @@ const triviaQuestions =
 
 //global variables
 
-var counter = 30;
+var counter = 5;
 var currentQuestion = 0;
 var score = 0;
 var lost = 0;
@@ -53,12 +52,15 @@ function countDown(){
 
 function timesUp(){
     clearInterval(time);
+
+    lost++;
+    nextQuestion();
 }
 
 //load questions and choices
 
 function loadQuestion() {
-    counter = 30;
+    counter = 5;
     time = setInterval(countDown, 1000);
 
     const question = triviaQuestions [currentQuestion].question;
@@ -81,5 +83,37 @@ function loadChoices(choices){
     return result;
 }
 
+//move on to next question automatically
+
+function nextQuestion(){
+    const questionOver = (triviaQuestions.length -1) === currentQuestion;
+    if (questionOver){
+        console.log('end of question');
+    } else {
+        currentQuestion++;
+        loadQuestion();
+    }
+}
+
+$(document).on('click', '.choice', function() {
+    clearInterval(time);
+    const selectedAnswer = $(this).attr('data-answer');
+    console.log (selectedAnswer);
+    const answer = triviaQuestions[currentQuestion].answer;
+
+    if (answer === selectedAnswer){
+
+
+        score++;
+        console.log ('correct answer');
+        nextQuestion();
+    } else {
+        lost++;
+        console.log ('wrong answer');
+        nextQuestion();
+    }
+
+
+});
 
 loadQuestion();
