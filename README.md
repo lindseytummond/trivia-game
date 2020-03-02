@@ -16,6 +16,6 @@ Other resources: CSS, Bootstrap, GoogleFonts
 5.  If the player chooses the wrong answer, the player will see the wrong option and then display the correct answer. Wait a few seconds, then the next question displays.
 6.  On the final screen, the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page) displays.
 
-<a href="https://lindseytummond.github.io/trivia-game/">
+<a href="https://lindseytummond.github.io/trivia-game/" target="_blank">
    <img src="assets/images/portfolio-image.png">
 </a>
