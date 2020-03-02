@@ -50,17 +50,13 @@ var wrongAnswerGifs = [
     "assets/images/no-buffalo.gif",  
 ]
 
-//function correctGifs(yesgifs){
-
-
-
-
-function randomGifs(gifs){
-    var random = Math.floor(Math.random() * gifs.length);
-    var randomGifs = gifs[random];
-    return randomGifs;
-}
-
+correctExplanation = [
+    "Wings were invented in 1964 at Anchor Bar. The right way to eat wings is with Blue Cheese, not Ranch!",
+    "Four consecutive years, 1991-1994, the Buffalo Bills made the Super Bowl, unfortunately losing every time, sigh.",
+    "The Polish holiday is celebrated in Buffalo. It’s a day of fun and romance after the long Lenten holiday. Buffalonians celebrate with dousing each other with water and hitting one another with pussy willows.",
+    "Buffalo’s 'Queen City' nickname references the city’s size as the second-largest in New York. The largest is obviously New York City or the 'King City'.",
+    "The average annual snowfall in Buffalo is 93.4 inches. Therefore, on average, four snow days are built into the calendar. If school districts go over, they take away days during Spring recess. Brutal.",
+]
 
 //load right and wrong answers
 
@@ -70,7 +66,8 @@ function preloadImage(status){
     if (status === 'win'){
         $('#game').html(`
             <p class="preload-image"> Congrats! You know your Buffalo trivia! </p>
-            <p class="preload-image"> The correct answer is <b>${correctAnswer}</b>  
+            <p class="preload-image"> The correct answer is <b>${correctAnswer}<b>
+            <br><br>${correctExplanation[currentQuestion]} <br><br>
             <img src='${correctAnswerGifs[currentQuestion]}'</p>
         `);
         
@@ -78,9 +75,10 @@ function preloadImage(status){
 
     else {
         $('#game').html(`
-            <p class="preload-image"> You must not be from Buffalo</p>
-            <p class="preload-image"> The correct answer is <b>${correctAnswer}</b></p>
-            <img src="${randomGifs(wrongAnswerGifs)}"/>
+            <p class="preload-image"> You must not be from Buffalo </p>
+            <p class="preload-image"> The correct answer is <b>${correctAnswer}<b>
+            <br><br>${correctExplanation[currentQuestion]} <br><br>
+            <img src='${wrongAnswerGifs[currentQuestion]}'</p>
         `);
     }
 }
@@ -107,7 +105,7 @@ function timesUp(){
 
     lost++;
     preloadImage('lose');
-    setTimeout(nextQuestion, 6 * 1000);
+    setTimeout(nextQuestion, 10 * 1000);
     
 }
 
@@ -162,14 +160,14 @@ $(document).on('click', '.choice', function() {
         score++;
         console.log ('correct answer');
         preloadImage('win');
-        setTimeout(nextQuestion, 6 * 1000);
+        setTimeout(nextQuestion, 10 * 1000);
     } 
     
     else {
         lost++;
         console.log ('wrong answer');
         preloadImage('lose');
-        setTimeout(nextQuestion, 6 * 1000);
+        setTimeout(nextQuestion, 10 * 1000);
     }
 
 
