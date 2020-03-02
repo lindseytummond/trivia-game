@@ -14,20 +14,24 @@
 
     <!-- style.css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1>I &hearts; Buffalo Trivia!</h1>
-            <button type="button" class="btn btn-primary" id="begin">Let's Begin</button>
+                <div class="title">
+                    <img src="assets/images/canva.png" alt="i heart">
+                </div>
         </div>
 
-        <h3 id="timer"></h3>
-        <div id="game"></div>
-    
-
-
-
+        <div class="questions">
+            <button type="button" class="btn btn-primary" id="begin">Let's Play</button>
+            <h3 id="timer"></h3>
+            <div id="game"></div>
+        </div>
     </div>
     <script src="assets/javascript/app.js"></script>
 </body>

@@ -68,7 +68,7 @@ function preloadImage(status){
             <p class="preload-image"> Congrats! You know your Buffalo trivia! </p>
             <p class="preload-image"> The correct answer is <b>${correctAnswer}<b>
             <br><br>${correctExplanation[currentQuestion]} <br><br>
-            <img src='${correctAnswerGifs[currentQuestion]}'</p>
+            <img class="video" src='${correctAnswerGifs[currentQuestion]}'</p>
         `);
         
     } 
@@ -93,7 +93,7 @@ var time;
 //timer
 function countDown(){
     counter--;
-    $('#timer').html('time left: ' + counter);
+    $('#timer').html('Time: ' + counter);
 
     if (counter === 0){
         timesUp();

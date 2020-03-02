@@ -1,6 +1,50 @@
+body {
+    background-image: url(../images/bills-background.png);
+    background-repeat: repeat;
+    font-family: 'Muli', ;
+    font-size: 18px;
+}
+
+.jumbotron {
+    text-align: center;
+    border: 5px solid #007bfe;
+    background: white;
+    color: red;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.questions {
+    background: white;
+    border: 5px solid #007bfe;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+}
+
+#begin{
+    width: 100%;
+    padding: 15px;
+    font-size: 22px;
+
+}
+
 .choice{
     border: 2px solid lightgrey;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
+    width: 60%;
+    margin: 10px auto;
+    text-align: center;
 }
+
+@media screen and (max-width: 640px) {
+    .title {
+       position: inherit
+    }
+  }
