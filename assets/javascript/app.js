@@ -50,6 +50,11 @@ var wrongAnswerGifs = [
     "assets/images/no-buffalo.gif",  
 ]
 
+//function correctGifs(yesgifs){
+
+
+
+
 function randomGifs(gifs){
     var random = Math.floor(Math.random() * gifs.length);
     var randomGifs = gifs[random];
@@ -65,8 +70,10 @@ function preloadImage(status){
     if (status === 'win'){
         $('#game').html(`
             <p class="preload-image"> Congrats! You know your Buffalo trivia! </p>
-            <p class="preload-image"> The correct answer is <b>${correctAnswer}</b> </p>
+            <p class="preload-image"> The correct answer is <b>${correctAnswer}</b>  
+            <img src='${correctAnswerGifs[currentQuestion]}'</p>
         `);
+        
     } 
 
     else {
@@ -79,8 +86,7 @@ function preloadImage(status){
 }
 
 //global variables
-
-var counter = 5;
+var counter = 30;
 var currentQuestion = 0;
 var score = 0;
 var lost = 0;
@@ -108,7 +114,7 @@ function timesUp(){
 //load questions and choices
 
 function loadQuestion() {
-    counter = 5;
+    counter = 30;
     time = setInterval(countDown, 1000);
 
     const question = triviaQuestions [currentQuestion].question;
@@ -185,7 +191,7 @@ function displayResult(){
 //game reset
 
 $(document).on('click', '#reset', function(){
-    counter = 5;
+    counter = 30;
     currentQuestion = 0;
     score = 0;
     lost = 0;
@@ -193,5 +199,8 @@ $(document).on('click', '#reset', function(){
     loadQuestion();
 });
 
-
-loadQuestion();
+$('#begin').click(function(){
+    $('#begin').remove();
+    $('#timer').html(counter);
+    loadQuestion();
+});
