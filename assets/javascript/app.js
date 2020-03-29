@@ -105,7 +105,7 @@ function timesUp(){
 
     lost++;
     preloadImage('lose');
-    setTimeout(nextQuestion, 10 * 1000);
+    setTimeout(nextQuestion, 5 * 1000);
     
 }
 
@@ -160,14 +160,14 @@ $(document).on('click', '.choice', function() {
         score++;
         console.log ('correct answer');
         preloadImage('win');
-        setTimeout(nextQuestion, 10 * 1000);
+        setTimeout(nextQuestion, 5 * 1000);
     } 
     
     else {
         lost++;
         console.log ('wrong answer');
         preloadImage('lose');
-        setTimeout(nextQuestion, 10 * 1000);
+        setTimeout(nextQuestion, 5 * 1000);
     }
 
 
