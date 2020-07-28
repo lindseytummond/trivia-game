@@ -36,9 +36,5 @@ Match points to the random number to win. If the player goes over, you lose!
 
 ## App Example:
 <p align="center">
-  <img src="assets/images/crystal-collector-readme.gif">
+  <img src="assets/images/trivia-readme.gif">
 </p>
-
-<a href="https://lindseytummond.github.io/trivia-game/" target="_blank">
-   <img src="assets/images/portfolio-image.png">
-</a>
